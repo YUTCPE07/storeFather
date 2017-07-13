@@ -1,0 +1,16 @@
+.big-checkbox {
+ 	width: 30px;
+ 	height: 30px;
+}
+.big-checkbox.ng-enter,
+.big-checkbox.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
+.big-checkbox.ng-leave,
+.big-checkbox.ng-enter.ng-enter-active {
+  opacity:1;
+}
+ .panel-heading .row.text-center.text-white div{
+ 	font-size:large;
+ }

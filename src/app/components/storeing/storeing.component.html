@@ -1,0 +1,39 @@
+<div *ngIf="storeing" >
+	<a [routerLink]="['/storeings']">Go Back</a>
+	<div class="row">
+		<div class="col-sm-2"><h1>รายการ: </h1></div>
+		<div class="col-sm-4"><h1 class="text-black">{{storeing.name}}</h1></div>
+		<div class="col-sm-3"><h1>ราคา/หน่วย: </h1></div>
+		<div class="col-sm-3">
+			<h1 class="text-black">{{storeing.priceonce}} บาท</h1></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3"><h1>มีจำนวนคงเหลือ: </h1></div>
+		<div class="col-sm-3"><h1 class="text-black">{{storeing.numnow}} หน่วย</h1></div>
+		<div class="col-sm-3"><h1>คิดเป็นเงิน: </h1></div>
+		<div class="col-sm-3">
+		<h1 class="text-black">{{storeing.numnow*storeing.priceonce}} บาท</h1></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3"><h1>จำนวนนำจ่าย: </h1></div>
+		<div class="col-sm-3">
+			<h1 class="text-black">{{storeing.numsell}} หน่วย</h1></div>
+		<div class="col-sm-3"><h1>คิดเป็นเงิน: </h1></div>
+		<div class="col-sm-3">
+			<h1 class="text-black">{{storeing.numsell*storeing.priceonce}} บาท</h1></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3"><h1>รับมาจาก: </h1></div>
+		<div class="col-sm-3">
+			<h1 class="text-black">{{storeing.by}}</h1></div>
+	</div><br>
+	<div class="row">
+		<div class="col-sm-6">
+		<button class="btn btn-success btn-block btn-lg">EDIT</button></div>
+		<div class="col-sm-6">
+		<button class="btn btn-danger btn-block btn-lg">DELETE</button></div>
+	</div>
+</div>
+
+
+

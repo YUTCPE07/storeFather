@@ -1,0 +1,22 @@
+<a [routerLink]="['/storeings']">Back</a>
+<br />
+<h2 class="page-header">Add Storeings</h2>
+<form (submit)="onAddSubmit()">
+  <div class="form-group">
+    <label>รายาร</label>
+    <input class="form-control" type="text" [(ngModel)]="name" name="title" required>
+  </div>
+  <div class="form-group">
+    <label>ราคา/หน่วย</label>
+    <input class="form-control" type="text" [(ngModel)]="priceonce" name="city" required>
+  </div>
+  <div class="form-group">
+    <label>จำนวน</label>
+    <input class="form-control" type="text" [(ngModel)]="numnow" name="owner" required>
+  </div>
+  <div class="form-group">
+    <label>รับมาจาก</label>
+    <input class="form-control" type="number" [(ngModel)]="by" name="bedrooms" required>
+  </div>
+  <input type="submit" value="submit" class="btn btn-success">
+</form>
