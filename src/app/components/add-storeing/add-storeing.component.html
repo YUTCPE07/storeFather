@@ -1,22 +1,24 @@
 <a [routerLink]="['/storeings']">Back</a>
 <br />
-<h2 class="page-header">Add Storeings</h2>
+<h1 class="page-header">เพิ่มรายการใหม่</h1>
 <form (submit)="onAddSubmit()">
   <div class="form-group">
-    <label>รายาร</label>
-    <input class="form-control" type="text" [(ngModel)]="name" name="title" required>
+    <h3>รายการ</h3>
+    <input class="form-control input-lg" type="text" [(ngModel)]="name" name="name" required autofocus>
   </div>
   <div class="form-group">
-    <label>ราคา/หน่วย</label>
-    <input class="form-control" type="text" [(ngModel)]="priceonce" name="city" required>
+    <h3>ราคา/หน่วย</h3>
+    <input class="form-control input-lg" type="number" [(ngModel)]="priceonce" name="priceonce" required>
   </div>
   <div class="form-group">
-    <label>จำนวน</label>
-    <input class="form-control" type="text" [(ngModel)]="numnow" name="owner" required>
+    <h3>จำนวน</h3>
+    <input class="form-control input-lg" type="number" [(ngModel)]="numnow" name="numnow" required>
   </div>
   <div class="form-group">
-    <label>รับมาจาก</label>
-    <input class="form-control" type="number" [(ngModel)]="by" name="bedrooms" required>
+    <h3>รับมาจาก</h3>
+    <input class="form-control input-lg" type="text" [(ngModel)]="by" name="by" required>
   </div>
-  <input type="submit" value="submit" class="btn btn-success">
+  <hr>
+  <a type="button" class="btn btn-danger btn-lg">ยกเลิก</a>
+  <input type="submit" value="ยืนยัน" class="btn btn-success btn-lg">
 </form>
