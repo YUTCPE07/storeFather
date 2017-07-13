@@ -1,4 +1,12 @@
-<!-- <button (click)="del()" class="btn btn-danger">ลบรายการ</button> -->
+<div class="input-group">
+    <span class="input-group-addon">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+    <input [(ngModel)]="userFilter.name"
+      type="text" class="form-control" placeholder="Search for...">
+</div>
+
+  <!-- <button (click)="del()" class="btn btn-danger">ลบรายการ</button> -->
 <div class="row">
     <div class="col-sm-12 ">
         <div class="panel panel-primary">
@@ -13,14 +21,9 @@
                     <div class="col-sm-2"></div>
                 </div>
             </div>
-            <!-- <ul class="list-group">
-			  <li class="list-group-item" *ngFor="let listing of listings">
-			    <a [routerLink]="['/listing/'+listing.$key]">{{listing.title}}</a>
-			  </li>
-			</ul> -->
             <div class="panel-body">
                 <div class="row text-center" 
-                *ngFor="let storeing of storeings;let i=index">
+                *ngFor="let storeing of storeings|filterBy: userFilter; let i = index">
                 	<!-- <div class="col-sm-1">
                 		<input *ngIf="showhidepregnant" class="big-checkbox" type="checkbox" value="" >
                     </div> -->

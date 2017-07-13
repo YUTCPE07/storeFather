@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {FirebaseService} from '../../services/firebase.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router, ActivatedRoute, Params} from '@angular/router';
@@ -8,6 +8,7 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
   templateUrl: './storeings.component.html',
   styleUrls: ['./storeings.component.css']
 })
+
 export class StoreingsComponent implements OnInit {
     id;
     name;
@@ -18,11 +19,15 @@ export class StoreingsComponent implements OnInit {
     newNumSell;
     by;
     storeings:any;
+    // storeings:any[];
     oncestore:any;
     @ViewChild('modaladd')
     modaladd: ModalComponent;
     @ViewChild('modalsell')
     modalsell: ModalComponent;
+    searchData;
+    filterargs;
+    userFilter: any = { name: '' };
 
   	constructor(
         private firebaseService:FirebaseService,
@@ -33,10 +38,10 @@ export class StoreingsComponent implements OnInit {
     showhidepregnant: boolean;
 
   	ngOnInit() {
-  		this.firebaseService.getstores().subscribe(storeings => {
-      	console.log(storeings);
-      	this.storeings = storeings;
-    	});
+    		this.firebaseService.getstores().subscribe(storeings => {
+          this.storeings = storeings;
+      	});
+
   	}
 
     addNumNow(oncestore){
