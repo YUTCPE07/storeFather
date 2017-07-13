@@ -59,7 +59,7 @@ export class FirebaseService {
     return this.listings.update(id, listing);
   }
 
-  updateAddNumNow(id, storeing){
+  updateStoreing(id, storeing){
     return this.storeings.update(id, storeing);
   }
 

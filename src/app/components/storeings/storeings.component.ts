@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import {FirebaseService} from '../../services/firebase.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 @Component({
   selector: 'app-storeings',
   templateUrl: './storeings.component.html',
@@ -17,6 +18,18 @@ export class StoreingsComponent implements OnInit {
     by;
     storeings:any;
     oncestore:any;
+    @ViewChild('modaladd')
+    modaladd: ModalComponent;
+
+    close() {
+        this.modaladd.close();
+    }
+    
+    open() {
+        this.modaladd.open();
+    }
+
+
   	constructor(
         private firebaseService:FirebaseService,
         public flashMessage:FlashMessagesService,
@@ -33,28 +46,26 @@ export class StoreingsComponent implements OnInit {
   	}
 
     addNumNow(oncestore){
-        console.log(oncestore)
         this.id = oncestore.$key;
         this.name = oncestore.name;
         this.priceonce = oncestore.priceonce;
         this.numnow = oncestore.numnow;
         this.by = oncestore.by;
-        // this.flashMessage.show('addNumNow',
-        // {cssClass: 'alert-success', timeout: 3000});
+        this.modaladd.open();
     }
 
     onAddSubmit(){
 
       let storeing = {
-          // name: this.name,
-          // priceonce: this.priceonce,
           numnow: this.numnow+this.newNumNow,
-          // numsell: this.numsell,
           by: this.by
       }
-      this.firebaseService.updateAddNumNow(this.id, storeing);
+      this.firebaseService.updateStoreing(this.id, storeing);
 
-      this.router.navigate(['/storeings']);
+      this.modaladd.close();
+      this.flashMessage.show('อัพเดตรายการ '+this.name +
+          'จาก '+(this.numnow)+' หน่วย เป็น '+(this.numnow+this.newNumNow)+' หน่วย',
+          {cssClass: 'alert-success', timeout: 3000});
     }
 
 }   

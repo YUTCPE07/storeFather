@@ -6,6 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
 import {FirebaseService} from './services/firebase.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     FlashMessagesModule,
+    Ng2Bs3ModalModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     RouterModule.forRoot(appRoutes)
   ],
