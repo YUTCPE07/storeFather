@@ -19,6 +19,6 @@
     <input class="form-control input-lg" type="text" [(ngModel)]="by" name="by" required>
   </div>
   <hr>
-  <a type="button" class="btn btn-danger btn-lg">ยกเลิก</a>
+  <a [routerLink]="['/storeings']" type="button" class="btn btn-danger btn-lg">ยกเลิก</a>
   <input type="submit" value="ยืนยัน" class="btn btn-success btn-lg">
 </form>

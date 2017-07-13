@@ -1,3 +1,28 @@
-<p>
-  edit-storeing works!
-</p>
+<a [routerLink]="['/storeing/'+id]">Back</a>
+<br />
+<h1 class="page-header">เเก้ไขข้อมูล</h1>
+<form (submit)="onEditSubmit()">
+  <div class="form-group">
+    <h3>รายการ</h3>
+    <input class="form-control input-lg" type="text" [(ngModel)]="name" name="name" required autofocus>
+  </div>
+  <div class="form-group">
+    <h3>ราคา/หน่วย</h3>
+    <input class="form-control input-lg" type="number" [(ngModel)]="priceonce" name="priceonce" required>
+  </div>
+  <div class="form-group">
+    <h3>จำนวนที่มีในคลัง</h3>
+    <input class="form-control input-lg" type="number" [(ngModel)]="numnow" name="numnow" required>
+  </div>
+  <div class="form-group">
+    <h3>จำนวนที่นำจ่าย</h3>
+    <input class="form-control input-lg" type="number" [(ngModel)]="numsell" name="numsell" required>
+  </div>
+  <div class="form-group">
+    <h3>รับมาจาก</h3>
+    <input class="form-control input-lg" type="text" [(ngModel)]="by" name="by" required>
+  </div>
+  <hr>
+  <a [routerLink]="['/storeing/'+id]" type="button" class="btn btn-danger btn-lg">ยกเลิก</a>
+  <input type="submit" value="ยืนยัน" class="btn btn-success btn-lg">
+</form>

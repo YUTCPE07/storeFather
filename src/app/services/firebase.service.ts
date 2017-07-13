@@ -67,6 +67,9 @@ export class FirebaseService {
     return this.listings.remove(id);
   }
 
+  deleteStoreing(id){
+    return this.storeings.remove(id);
+  }
 }
 
 interface Storeing{

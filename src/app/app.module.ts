@@ -41,6 +41,7 @@ const appRoutes: Routes = [
   {path: 'add-listing', component:AddListingComponent},
   {path: 'add-storeing', component:AddStoreingComponent},
   {path:'edit-listing/:id', component:EditListingComponent},
+  {path:'edit-storeing/:id', component:EditStoreingComponent},
   {path:'storeings', component:StoreingsComponent},
   {path:'storeing/:id', component:StoreingComponent}
 

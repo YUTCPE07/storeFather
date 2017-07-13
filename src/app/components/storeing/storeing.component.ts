@@ -21,17 +21,15 @@ export class StoreingComponent implements OnInit {
   		this.firebaseService.getStoreingDetails(this.id).subscribe(storeing => {
   			console.log(storeing);
 	      	this.storeing = storeing;
-
-	      // let storageRef = firebase.storage().ref();
-	      // let spaceRef = storageRef.child(this.listing.path);
-	      // storageRef.child(this.listing.path).getDownloadURL().then((url) => {
-	      //   // Set image url
-	      //   this.imageUrl = url;
-	      // }).catch((error) => {
-	      //   console.log(error);
-	      // });
-
 	    });
   	}
 
+  	onDeleteClick(){
+  		var r = confirm("ยืนยันการลบ!");
+		if (r == true) {
+	  		this.firebaseService.deleteStoreing(this.id);
+		    this.router.navigate(['/storeings']);
+		}
+  		
+  	}
 }

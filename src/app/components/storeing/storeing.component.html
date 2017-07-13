@@ -29,9 +29,9 @@
 	</div><br>
 	<div class="row">
 		<div class="col-sm-6">
-		<button class="btn btn-success btn-block btn-lg">EDIT</button></div>
+		<a [routerLink]="['/edit-storeing/'+storeing.$key]" class="btn btn-success btn-block btn-lg">EDIT</a></div>
 		<div class="col-sm-6">
-		<button class="btn btn-danger btn-block btn-lg">DELETE</button></div>
+		<button (click)="onDeleteClick()" class="btn btn-danger btn-block btn-lg">DELETE</button></div>
 	</div>
 </div>
 
