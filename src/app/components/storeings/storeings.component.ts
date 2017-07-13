@@ -15,20 +15,14 @@ export class StoreingsComponent implements OnInit {
     numnow;
     newNumNow;
     numsell;
+    newNumSell;
     by;
     storeings:any;
     oncestore:any;
     @ViewChild('modaladd')
     modaladd: ModalComponent;
-
-    close() {
-        this.modaladd.close();
-    }
-    
-    open() {
-        this.modaladd.open();
-    }
-
+    @ViewChild('modalsell')
+    modalsell: ModalComponent;
 
   	constructor(
         private firebaseService:FirebaseService,
@@ -61,11 +55,32 @@ export class StoreingsComponent implements OnInit {
           by: this.by
       }
       this.firebaseService.updateStoreing(this.id, storeing);
-
       this.modaladd.close();
       this.flashMessage.show('อัพเดตรายการ '+this.name +
           'จาก '+(this.numnow)+' หน่วย เป็น '+(this.numnow+this.newNumNow)+' หน่วย',
           {cssClass: 'alert-success', timeout: 3000});
     }
 
+    numSell(oncestore){
+        this.id = oncestore.$key;
+        this.name = oncestore.name;
+        this.priceonce = oncestore.priceonce;
+        this.numnow = oncestore.numnow;
+        this.numsell = oncestore.numsell;
+        this.by = oncestore.by;
+        this.modalsell.open();
+    }
+
+    numSellSubmit(){
+      let storeing = {
+          numnow: this.numnow-this.newNumSell,
+          numsell: this.numsell+this.newNumSell,
+      }
+      this.firebaseService.updateStoreing(this.id, storeing);
+
+      this.modalsell.close();
+      this.flashMessage.show('อัพเดตรายการ '+this.name +
+          'จาก '+this.numnow+' หน่วย เป็น '+(this.numnow-this.newNumSell)+' หน่วย',
+          {cssClass: 'alert-success', timeout: 3000});
+    }
 }   
