@@ -1,15 +1,26 @@
-<div class="input-group">
-    <span class="input-group-addon">
-        <i class="fa fa-search" aria-hidden="true"></i>
-    </span>
-    <input [(ngModel)]="userFilter.name"
-      type="text" class="form-control" placeholder="Search for...">
+    <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
+    show = {{show}}
+    <br>
+    <div *ngIf="show">Text to show</div>
+    
+<div class="row">
+    <div class="col-sm-6">
+      <div class="input-group">
+          <span class="input-group-addon">
+              <i class="fa fa-search" aria-hidden="true"></i>
+          </span>
+          <input [(ngModel)]="userFilter.name"
+            type="text" class="form-control" placeholder="Search for...">
+      </div>
+    </div>
 </div>
+
 
   <!-- <button (click)="del()" class="btn btn-danger">ลบรายการ</button> -->
 <div class="row">
     <div class="col-sm-12 ">
         <div class="panel panel-primary">
+            <form (submit)="del()">
             <div class="panel-heading">
                 <div class="row text-center text-white">
                     <!-- <div class="col-sm-1"></div> -->
@@ -18,7 +29,12 @@
                     <div class="col-sm-2">จำนวนที่มี</div>
                     <div class="col-sm-2">จำนวนนำจ่าย</div>
                     <div class="col-sm-2">คิดเป็นเงิน</div>
-                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2">
+                        <button *ngIf="!btnDel" (click)="delClick()" 
+                          class="btn btn-danger btn-block">ลบ</button>
+                       <!--  <button *ngIf="btnDel" (click)="del()" class="btn btn-danger btn-block"> ลบรายการที่เลือก</button> -->
+                       <input type="submit" class="btn btn-danger btn-block" value="ลบรายการที่เลือก">
+                    </div>
                 </div>
             </div>
             <div class="panel-body">
@@ -32,7 +48,7 @@
                     <div class="col-sm-2"><h4>{{storeing.numnow}}</h4></div>
                     <div class="col-sm-2"><h4>{{storeing.numsell}}</h4></div>
                     <div class="col-sm-2"><h4>{{storeing.numsell*storeing.priceonce}}</h4></div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" *ngIf="!btnDel">
                   	     <a [routerLink]="['/storeing/'+storeing.$key]" class="btn btn-primary">
                           <i class="fa fa-list" aria-hidden="true"></i>   
                         </a>
@@ -43,8 +59,14 @@
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </button>
                     </div>
+                    <div class="col-sm-2" *ngIf="btnDel">
+                        <input class="big-checkbox" type="checkbox" value="{{storeing.$key}}">
+                        <!-- <input type="checkbox" [checklist]="idCheck" value = "{{storeing.$key}}"> -->
+                        <!-- <input id="{{storeing.$key}}" [(ngModel)]="rp.selected" type="checkbox" (change)="checkbox(rp)"> -->
+                    </div>
                 </div>
             </div>
+            </form>
             <!-- <div id="nullOrder" class="panel-body">
                 <div class="row text-center">
                     <div class="col-sm-12"><h4>ยังไม่มีรายการ</h4></div>

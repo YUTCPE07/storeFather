@@ -3,12 +3,13 @@ import {FirebaseService} from '../../services/firebase.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+// import { ChecklistDirective } from 'ng2-checklist';
 @Component({
   selector: 'app-storeings',
   templateUrl: './storeings.component.html',
-  styleUrls: ['./storeings.component.css']
+  styleUrls: ['./storeings.component.css'],
 })
-
+// @Directive({ directives: ChecklistDirective })
 export class StoreingsComponent implements OnInit {
     id;
     name;
@@ -19,7 +20,6 @@ export class StoreingsComponent implements OnInit {
     newNumSell;
     by;
     storeings:any;
-    // storeings:any[];
     oncestore:any;
     @ViewChild('modaladd')
     modaladd: ModalComponent;
@@ -28,14 +28,15 @@ export class StoreingsComponent implements OnInit {
     searchData;
     filterargs;
     userFilter: any = { name: '' };
-
+    btnDel: boolean = true;
+    idCheck:any;
+   
   	constructor(
         private firebaseService:FirebaseService,
         public flashMessage:FlashMessagesService,
         private router: Router,
         private route: ActivatedRoute
     ) { }
-    showhidepregnant: boolean;
 
   	ngOnInit() {
     		this.firebaseService.getstores().subscribe(storeings => {
@@ -43,6 +44,16 @@ export class StoreingsComponent implements OnInit {
       	});
 
   	}
+
+    delClick(){
+        this.btnDel = !this.btnDel;
+    }
+
+    del(ele){
+      this.btnDel = !this.btnDel;
+      // console.log(this.idCheck)
+      console.log(ele)
+    }
 
     addNumNow(oncestore){
         this.id = oncestore.$key;
