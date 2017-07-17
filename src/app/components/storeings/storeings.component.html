@@ -60,7 +60,8 @@
                         </button>
                     </div>
                     <div class="col-sm-2" *ngIf="btnDel">
-                        <input class="big-checkbox" type="checkbox" value="{{storeing.$key}}">
+                        <input class="big-checkbox" type="checkbox" name="{{storeing.$key}}">
+                        {{storeing.$key}}
                         <!-- <input type="checkbox" [checklist]="idCheck" value = "{{storeing.$key}}"> -->
                         <!-- <input id="{{storeing.$key}}" [(ngModel)]="rp.selected" type="checkbox" (change)="checkbox(rp)"> -->
                     </div>

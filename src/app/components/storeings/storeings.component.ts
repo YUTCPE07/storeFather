@@ -30,7 +30,8 @@ export class StoreingsComponent implements OnInit {
     userFilter: any = { name: '' };
     btnDel: boolean = true;
     idCheck:any;
-   
+    checkboxs;
+
   	constructor(
         private firebaseService:FirebaseService,
         public flashMessage:FlashMessagesService,
@@ -49,10 +50,10 @@ export class StoreingsComponent implements OnInit {
         this.btnDel = !this.btnDel;
     }
 
-    del(ele){
+    del(){
       this.btnDel = !this.btnDel;
       // console.log(this.idCheck)
-      console.log(ele)
+      console.log(this.checkboxs.storing)
     }
 
     addNumNow(oncestore){
