@@ -1,4 +1,4 @@
 # storeFather
-npm install
-ng serve
-go localhost:4200
+npm install <br />
+ng serve <br />
+go localhost:4200 <br />
