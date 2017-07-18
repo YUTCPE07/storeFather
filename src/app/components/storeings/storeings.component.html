@@ -1,8 +1,4 @@
-    <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
-    show = {{show}}
-    <br>
-    <div *ngIf="show">Text to show</div>
-    
+
 <div class="row">
     <div class="col-sm-6">
       <div class="input-group">
@@ -20,7 +16,6 @@
 <div class="row">
     <div class="col-sm-12 ">
         <div class="panel panel-primary">
-            <form (submit)="del()">
             <div class="panel-heading">
                 <div class="row text-center text-white">
                     <!-- <div class="col-sm-1"></div> -->
@@ -30,10 +25,16 @@
                     <div class="col-sm-2">จำนวนนำจ่าย</div>
                     <div class="col-sm-2">คิดเป็นเงิน</div>
                     <div class="col-sm-2">
-                        <button *ngIf="!btnDel" (click)="delClick()" 
+                        <button *ngIf="!btnDel" (click)="this.btnDel = !this.btnDel" 
                           class="btn btn-danger btn-block">ลบ</button>
-                       <!--  <button *ngIf="btnDel" (click)="del()" class="btn btn-danger btn-block"> ลบรายการที่เลือก</button> -->
-                       <input type="submit" class="btn btn-danger btn-block" value="ลบรายการที่เลือก">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button *ngIf="btnDel" (click)="del()" class="btn btn-danger btn-block">ลบ</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button *ngIf="btnDel" (click)="Undel()" class="btn btn-default btn-block"> ยกเลิก</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,14 +61,12 @@
                         </button>
                     </div>
                     <div class="col-sm-2" *ngIf="btnDel">
-                        <input class="big-checkbox" type="checkbox" name="{{storeing.$key}}">
-                        {{storeing.$key}}
-                        <!-- <input type="checkbox" [checklist]="idCheck" value = "{{storeing.$key}}"> -->
-                        <!-- <input id="{{storeing.$key}}" [(ngModel)]="rp.selected" type="checkbox" (change)="checkbox(rp)"> -->
+                        <input type="checkbox" class="big-checkbox"
+                             [(checklist)]="idCheck"
+                             [checklistValue]="storeing.$key" />
                     </div>
                 </div>
             </div>
-            </form>
             <!-- <div id="nullOrder" class="panel-body">
                 <div class="row text-center">
                     <div class="col-sm-12"><h4>ยังไม่มีรายการ</h4></div>

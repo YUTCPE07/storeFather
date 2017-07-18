@@ -29,6 +29,7 @@ export class StoreingComponent implements OnInit {
 		if (r == true) {
 	  		this.firebaseService.deleteStoreing(this.id);
 		    this.router.navigate(['/storeings']);
+		    
 		}
   		
   	}

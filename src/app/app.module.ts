@@ -8,6 +8,7 @@ import {FirebaseService} from './services/firebase.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
+import { ChecklistModule } from 'angular-checklist';
 // import {RADIO_GROUP_DIRECTIVES} from "ng2-radio-group";
 
 import { AppComponent } from './app.component';
@@ -61,7 +62,7 @@ const appRoutes: Routes = [
     StoreingsComponent,
     StoreingComponent,
     AddStoreingComponent,
-    // RADIO_GROUP_DIRECTIVES,
+    // ,
     EditStoreingComponent
   ],
   imports: [
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     Ng2Bs3ModalModule,
     Ng2FilterPipeModule,
+    ChecklistModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     RouterModule.forRoot(appRoutes)
   ],

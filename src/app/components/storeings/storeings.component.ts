@@ -3,13 +3,11 @@ import {FirebaseService} from '../../services/firebase.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-// import { ChecklistDirective } from 'ng2-checklist';
 @Component({
   selector: 'app-storeings',
   templateUrl: './storeings.component.html',
   styleUrls: ['./storeings.component.css'],
 })
-// @Directive({ directives: ChecklistDirective })
 export class StoreingsComponent implements OnInit {
     id;
     name;
@@ -28,9 +26,8 @@ export class StoreingsComponent implements OnInit {
     searchData;
     filterargs;
     userFilter: any = { name: '' };
-    btnDel: boolean = true;
-    idCheck:any;
-    checkboxs;
+    btnDel: boolean = false;
+    idCheck = [];
 
   	constructor(
         private firebaseService:FirebaseService,
@@ -43,17 +40,32 @@ export class StoreingsComponent implements OnInit {
     		this.firebaseService.getstores().subscribe(storeings => {
           this.storeings = storeings;
       	});
-
   	}
 
-    delClick(){
-        this.btnDel = !this.btnDel;
+    del(){
+      var data = this.idCheck;
+      var firebaseService = this.firebaseService;
+      var flashMessage = this.flashMessage;
+      var r = confirm("ยืนยันการลบ!"+data.length+" รายการ");
+      if (r == true) {
+          this.btnDel = !this.btnDel;
+          // console.log(data.length)
+          data.forEach(function(id,i){
+              firebaseService.deleteStoreing(id);
+              console.log(i++ === data.length)
+              if(i++ === data.length){
+                  flashMessage.show('ลบข้อมูล '+data.length+' รายการเรียบร้อย',
+                  {cssClass: 'alert-success', timeout: 3000});
+              }
+          });
+      }else{
+          this.Undel();
+      }
     }
 
-    del(){
+    Undel(){
+      this.idCheck = [];
       this.btnDel = !this.btnDel;
-      // console.log(this.idCheck)
-      console.log(this.checkboxs.storing)
     }
 
     addNumNow(oncestore){
