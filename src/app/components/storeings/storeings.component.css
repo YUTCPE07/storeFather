@@ -14,3 +14,12 @@
  .panel-heading .row.text-center.text-white div{
  	font-size:large;
  }
+
+ .bg-inverse{
+ 	background: #034789;
+ 	border-color: #044E96;
+ }
+ .text-white{
+ 	color: white;
+ }
+ 

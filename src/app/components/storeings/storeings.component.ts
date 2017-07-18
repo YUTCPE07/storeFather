@@ -28,7 +28,7 @@ export class StoreingsComponent implements OnInit {
     userFilter: any = { name: '' };
     btnDel: boolean = false;
     idCheck = [];
-
+  
   	constructor(
         private firebaseService:FirebaseService,
         public flashMessage:FlashMessagesService,

@@ -2,11 +2,12 @@
 <div class="row">
     <div class="col-sm-6">
       <div class="input-group">
-          <span class="input-group-addon">
+          <span class="input-group-addon bg-inverse text-white">
               <i class="fa fa-search" aria-hidden="true"></i>
+              ค้นหา
           </span>
           <input [(ngModel)]="userFilter.name"
-            type="text" class="form-control" placeholder="Search for...">
+            type="text" class="form-control" placeholder="Search for..." autofocus>
       </div>
     </div>
 </div>
@@ -38,12 +39,9 @@
                     </div>
                 </div>
             </div>
-            <div class="panel-body">
-                <div class="row text-center" 
-                *ngFor="let storeing of storeings|filterBy: userFilter; let i = index">
-                	<!-- <div class="col-sm-1">
-                		<input *ngIf="showhidepregnant" class="big-checkbox" type="checkbox" value="" >
-                    </div> -->
+            <div class="panel-body" 
+              *ngFor="let storeing of storeings|filterBy: userFilter; let i = index" >
+                <div class="row text-center">
                     <div class="col-sm-1"><h4>{{i+1}}</h4></div>
                     <div class="col-sm-3"><h4>{{storeing.name}}</h4></div>
                     <div class="col-sm-2"><h4>{{storeing.numnow}}</h4></div>
@@ -66,12 +64,11 @@
                              [checklistValue]="storeing.$key" />
                     </div>
                 </div>
-            </div>
-            <!-- <div id="nullOrder" class="panel-body">
-                <div class="row text-center">
-                    <div class="col-sm-12"><h4>ยังไม่มีรายการ</h4></div>
+                <div class="row text-center" 
+                    *ngIf="(storeings | filterBy: stringFilter).length == 0 " >
+                    <div class="col-sm-12"><h4>ไม่มีรายการ</h4></div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>   
 </div>
